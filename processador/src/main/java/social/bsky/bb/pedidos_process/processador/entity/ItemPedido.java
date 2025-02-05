@@ -5,14 +5,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
 @Table(name="item_pedido")
-public record ItemPedido(@Id UUID id, Integer quantidade, @ManyToOne Produto produto, @ManyToOne Pedido pedido) {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ItemPedido {
+    @Id
+    private UUID id;
+    private Integer quantidade;
+    @ManyToOne
+    private Produto produto;
+    @ManyToOne private Pedido pedido;
 
-    public ItemPedido {
-      id = UUID.randomUUID();
-    }
 }
